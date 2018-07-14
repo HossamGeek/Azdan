@@ -1,0 +1,29 @@
+<h1 class="text-center">All systems Page</h1>
+
+<table class="table table-striped text-center  table-bordered offset-1">
+  <thead>
+  <tr>
+    <th scope="col">System</th>
+    <th scope="col">Task</th>
+    <th scope="col">Describe</th>
+    <th scope="col">Status</th>
+    <th scope="col">Other</th>
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let task of alltasks" >
+    <th scope="row"><a href="/developer/allsystems" class="system-name">{{task.systemid.name}}</a></th>
+    <th scope="row"><a href="/developer/edittask/{{task._id}}" class="system-name">{{task.name}}</a></th>
+    <td>
+      <p >{{task.describe}}</p>
+    </td>
+    <td style="padding-left: 100px"><div class="status"><span class="text-center" [ngStyle]="getstyle(task.status)" >{{task.status}} %</span></div></td>
+    <td>
+      <a href="/developer/edittask/{{task._id}}" class="btn btn-success">edit</a>
+      <button  (click)="delete(task._id)" style="margin-left: 5px" class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

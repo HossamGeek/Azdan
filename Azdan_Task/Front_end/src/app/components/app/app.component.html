@@ -1,0 +1,51 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/home">Azdan</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse ul-list" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="admin">
+        <a class="nav-link" href="/admin/allsystems">AllSystems <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active" *ngIf="admin">
+        <a class="nav-link" href="/alluser">Allusers <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="admin">
+        <a class="nav-link" href="/addsystem">Addsystem <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="admin">
+        <a class="nav-link" href="/adduser">Adduser <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active" *ngIf="tester">
+        <a class="nav-link" href="/tester/allsystems">AllSystems <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="tester">
+        <a class="nav-link" href="/tester/allissues">Allissues <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active" *ngIf="developer">
+        <a class="nav-link" href="/developer/allsystems">AllSystems <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="developer">
+        <a class="nav-link" href="/developer/alltasks">AllTask <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+      <button class="btn btn-outline-success " type="submit" style="margin-right: 10px" (click)="login()" *ngIf="!logined">Login</button>
+      <div *ngIf="logined">
+        <button class="btn btn-outline-warning " style="margin-right: 10px">{{username}}</button>
+        <button class="btn btn-outline-danger " (click)="logout()">Logout</button>
+      </div>
+
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

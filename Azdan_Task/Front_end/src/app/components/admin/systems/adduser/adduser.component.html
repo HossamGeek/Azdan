@@ -1,0 +1,22 @@
+
+<div style=" text-align:center">
+  <h1>
+    add User page
+  </h1>
+
+</div>
+<div class="alert alert-danger text-center offset-sm-4 col-sm-4" style="margin-bottom: 15px" *ngIf="erralert"> {{errdata}}</div>
+<form #fo="ngForm" (submit)="adduser(fo)" class="form_login offset-sm-5">
+
+  <input type="text" class="form-control col-sm-4" name="name" required placeholder="Enter  name"  [(ngModel)]="user.name">
+  <input type="password" class="form-control col-sm-4 describe" name="password"  placeholder="Enter password" required [(ngModel)]="user.password">
+  <input type="text" hidden [(ngModel)]="userstatus" name="status" required>
+  <select name=""   style="margin-bottom: 10px" class="selectpicker form-control col-sm-4 collect-option"  (change)="addstatus($event.target.value)">
+    <optgroup label="Status" >
+      <option  [value]="1" >Admin</option>
+      <option  [value]="2" >Tester</option>
+      <option  [value]="3" >developer</option>
+    </optgroup>
+  </select>
+  <input type="submit" value="Add" class="btn btn-success col-sm-2 offset-1">
+</form>

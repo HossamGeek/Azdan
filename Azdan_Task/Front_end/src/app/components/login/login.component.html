@@ -1,0 +1,12 @@
+<div style=" text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+</div>
+<div class="alert alert-danger text-center offset-sm-4 col-sm-4" style="margin-bottom: 15px" *ngIf="erralert"> {{errdata}}</div>
+<form #fo="ngForm" (submit)="login(fo)" class="form_login offset-sm-5">
+  <input type="text" class="form-control col-sm-4" name="name" placeholder="Enter Your name" required  [(ngModel)]="userdata.name">
+  <input type="password" class="form-control col-sm-4" name="password" placeholder="Enter Your password" required [(ngModel)]="userdata.password">
+  <input type="submit" value="Login" class="btn btn-success col-sm-2 offset-1">
+</form>

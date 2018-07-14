@@ -1,0 +1,31 @@
+<h1 class="text-center">All systems Page</h1>
+
+<table class="table table-striped text-center  table-bordered offset-1">
+  <thead>
+  <tr>
+    <th scope="col">System</th>
+    <th scope="col">Testers</th>
+    <th scope="col">Developers</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let system of allsystem">
+    <th scope="row"><a href="/getsystem/{{system._id}}" class="system-name">{{system.name}}</a></th>
+    <td>
+      <select name="" id="1" class="form-control" *ngIf="system.testerid.length > 0">
+        <option *ngFor="let tester of system.testerid" value="">{{tester.name}}</option>
+      </select>
+      <p *ngIf="system.testerid.length <= 0">#Not Have tester</p>
+    </td>
+    <td><select name="" id="2" class="form-control" *ngIf="system.developerid.length > 0">
+      <option *ngFor="let developer of system.developerid" value="">{{developer.name}}</option>
+    </select>
+      <p *ngIf="system.developerid.length <= 0">#Not Have developer</p>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+
+

@@ -1,0 +1,21 @@
+<h1 class="text-center">All systems Page</h1>
+
+<table class="table table-striped text-center  table-bordered offset-1">
+  <thead>
+  <tr>
+    <th scope="col">System</th>
+    <th scope="col">Other</th>
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let system of allsystem">
+    <th scope="row"><a href="/developer/allsystems" class="system-name">{{system.name}}</a></th>
+    <td>
+      <a href="/developer/addtask/{{system._id}}" class="btn btn-success">Add develope</a>
+    </td>
+
+  </tr>
+  </tbody>
+</table>

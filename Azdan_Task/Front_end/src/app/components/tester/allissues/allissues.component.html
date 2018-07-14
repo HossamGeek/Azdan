@@ -1,0 +1,27 @@
+<h1 class="text-center">All systems Page</h1>
+
+<table class="table table-striped text-center  table-bordered offset-1">
+  <thead>
+  <tr>
+    <th scope="col">System</th>
+    <th scope="col">Isseus</th>
+    <th scope="col">describe</th>
+    <th scope="col">Other</th>
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let issue of allisues">
+    <th scope="row"><a href="tester/allsystems" class="system-name">{{issue.systemid.name}}</a></th>
+    <th scope="row"><a href="/tester/editissue/{{issue._id}}" class="system-name">{{issue.name}}</a></th>
+    <td>
+      <p >{{issue.describe}}</p>
+    </td>
+    <td>
+      <a href="/tester/editissue/{{issue._id}}" class="btn btn-success">edit</a>
+      <button (click)="delete(issue._id)" style="margin-left: 5px" class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

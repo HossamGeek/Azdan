@@ -1,0 +1,24 @@
+<h1 class="text-center">Alluser Page</h1>
+
+
+
+<table class="table  text-center  table-bordered offset-1">
+  <thead>
+  <tr>
+    <th scope="col">System</th>
+    <th scope="col">Other</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of alluser">
+    <th scope="row">{{user.name}}</th>
+    <td class="other">
+            <button class="btn btn-success" *ngIf="user.status === 1">Admin</button>
+            <button class="btn btn-warning" *ngIf="user.status === 2">Tester</button>
+      <button class="btn btn-primary" *ngIf="user.status === 3">Developer</button>
+      <button class="btn btn-danger" style="margin-left: 10px" *ngIf="user.status != 1" (click)="deleteUser(user._id)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

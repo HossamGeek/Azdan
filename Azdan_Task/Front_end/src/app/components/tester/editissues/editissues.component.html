@@ -1,0 +1,14 @@
+
+<div style=" text-align:center">
+  <h1>
+    Edite Issue page
+  </h1>
+
+</div>
+<div class="alert alert-danger text-center offset-sm-4 col-sm-4" style="margin-bottom: 15px" *ngIf="erralert"> {{errdata}}</div>
+<form #fo="ngForm" (submit)="editissues(fo)" class="form_login offset-sm-5">
+
+  <input type="text" class="form-control col-sm-4" name="name" required placeholder="Enter  name"  [(ngModel)]="issues.name">
+  <input type="text" class="form-control col-sm-4 describe" name="describe"  placeholder="Enter Describe" required [(ngModel)]="issues.describe">
+  <input type="submit" value="edit" class="btn btn-success col-sm-2 offset-1">
+</form>

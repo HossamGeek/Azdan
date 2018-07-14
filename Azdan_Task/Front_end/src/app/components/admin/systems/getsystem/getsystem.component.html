@@ -1,0 +1,90 @@
+<h1 class="text-center">system Page</h1>
+
+<div class="alert alert-danger col-sm-6 offset-3" *ngIf="deletedalert">{{deletedmsg}}</div>
+
+<table class="table  text-center  table-bordered offset-1">
+  <thead>
+  <tr>
+    <th scope="col">System</th>
+    <th scope="col">Describe </th>
+    <th scope="col">Other</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let system of getsystem">
+    <th scope="row">{{system.name}}</th>
+    <td scope="row"> <p>{{system.describe}} </p></td>
+    <td class="other">
+      <a href="/editsystem/{{system._id}}" class="btn btn-success">Edit</a>
+      <button class="btn btn-danger" (click)="deleteSystem(system._id)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table  table-bordered offset-1">
+  <thead>
+  <tr>
+    <th scope="col">developers</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr >
+    <td class="other" *ngFor="let system of getsystem">
+      <button class="btn delete_user" *ngFor="let developer of system.developerid" (click)="deleteDeveloper(developer._id)">{{developer.name}} <i class="fa fa-close"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<table class="table  table-bordered offset-1">
+  <thead>
+  <tr>
+    <th scope="col">testers</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr >
+    <td class="other" *ngFor="let system of getsystem">
+      <button class="btn delete_user" *ngFor="let tester of system.testerid" (click)="deleteTester(tester._id)" >{{tester.name}} <i class="fa fa-close"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button  class="btn btn-warning offset-1 add" (click)="showtester()">Add Tester</button>
+<button  class="btn btn-primary add" (click)="showdeveloper()">Add Developer</button>
+
+
+
+<div  class="modalDialog" *ngIf="showdeveloperdialog">
+  <div class="show-data col-sm-3 col-lg-2">
+    <span  (click)="close()" class="close">X</span>
+    <div class="alert alert-danger" *ngIf="erralert">{{errdata}}</div>
+    <form #fo="ngForm" (submit)="addDeveloperToDb(fo)">
+    <input type="text"  class="form-control" style="margin-bottom: 10px" name="developer" required  hidden [(ngModel)]="inputdeveloper">
+    <select name=""  style="" class="selectpicker form-control  collect-option"  (change)="adddeveloper($event.target.value)">
+      <option *ngFor="let developer of developers" [value]="[developer._id,developer.name]" >{{developer.name}}</option>
+    </select>
+    <input type="submit" class="btn btn-success offset-2" value="Add Developer" style="margin-top: 10px" >
+    </form>
+  </div>
+</div>
+
+<div  class="modalDialog" *ngIf="showtesterdialog">
+  <div class="show-data col-sm-3 col-lg-2">
+    <span  (click)="close()" class="close">X</span>
+    <div class="alert alert-danger" *ngIf="erralert">{{errdata}}</div>
+    <form #fo="ngForm" (submit)="addTesterToDb(fo)">
+      <input type="text"  class="form-control" style="margin-bottom: 10px" name="tester" required  hidden [(ngModel)]="inputtester">
+      <select name=""   style="" class="selectpicker form-control  collect-option" (change)="addtester($event.target.value)">
+        <optgroup label="Testers" >
+          <option *ngFor="let tester of testers" [value]="[tester._id,tester.name]" >{{tester.name}}</option>
+        </optgroup>
+      </select>
+      <input  type="submit" class="btn btn-success offset-3" value="Add Tester" style="margin-top: 10px">
+
+    </form>
+  </div>
+</div>
