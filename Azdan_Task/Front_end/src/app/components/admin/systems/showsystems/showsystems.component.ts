@@ -12,8 +12,13 @@ export class ShowsystemsComponent implements OnInit {
   admin = '';
   status = 0;
   loginuser = '';
+  setInterval :any;
+
   constructor(public  dataService: ConnectService, public router: Router) {
     this.showlogin();
+    this.setInterval = setInterval(()=>{
+      this.getAllSystems();
+    },1000);
     this.getAllSystems();
   }
 

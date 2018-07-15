@@ -14,8 +14,14 @@ export class AllusersComponent implements OnInit {
   alluser = [];
   tester = false;
   developer = false;
+  setInterval :any;
+
   constructor(public  dataService: ConnectService, public route: ActivatedRoute, public router: Router) {
     this.showlogin();
+    this.setInterval = setInterval(()=>{
+      this.getAllUser();
+    },1000);
+
     this.getAllUser();
   }
 

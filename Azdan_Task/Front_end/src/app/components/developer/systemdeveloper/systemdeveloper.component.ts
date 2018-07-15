@@ -12,9 +12,14 @@ export class SystemdeveloperComponent implements OnInit {
   developer = '';
   status = 0;
   allsystem = [];
+  setInterval :any;
+
   constructor(public  dataService: ConnectService, public route: ActivatedRoute, public router: Router) {
     this.showlogin();
     this.developer = sessionStorage.getItem('userid');
+    this.setInterval = setInterval(()=>{
+      this.getallsystem(this.developer);
+    },1000);
 
     this.getallsystem(this.developer);
   }

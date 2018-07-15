@@ -12,10 +12,14 @@ export class SystemtesterComponent implements OnInit {
   tester = '';
   status = 0;
   allsystem = [];
+  setInterval :any;
+
   constructor(public  dataService: ConnectService, public route: ActivatedRoute, public router: Router) {
     this.showlogin();
     this.tester = sessionStorage.getItem('userid');
-
+    this.setInterval = setInterval(()=>{
+      this.getallsystem(this.tester);
+    },1000);
     this.getallsystem(this.tester);
   }
 

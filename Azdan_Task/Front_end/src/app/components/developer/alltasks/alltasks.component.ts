@@ -12,10 +12,14 @@ export class AlltasksComponent implements OnInit {
   developer = '';
   status = 0;
   alltasks = [];
+  setInterval :any;
+
   constructor(public  dataService: ConnectService, public route: ActivatedRoute, public router: Router) {
     this.showlogin();
     this.developer = sessionStorage.getItem('userid');
-
+    this.setInterval = setInterval(()=>{
+      this.getalltasks(this.developer);
+    },1000);
     this.getalltasks(this.developer);
   }
 

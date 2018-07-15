@@ -12,10 +12,14 @@ export class AllissuesComponent implements OnInit {
   tester = '';
   status = 0;
   allisues = [];
+  setInterval :any;
+
   constructor(public  dataService: ConnectService, public route: ActivatedRoute, public router: Router) {
     this.showlogin();
     this.tester = sessionStorage.getItem('userid');
-
+    this.setInterval = setInterval(()=>{
+      this.getallisues(this.tester);
+    },1000);
     this.getallisues(this.tester);
   }
   ngOnInit() {
